@@ -1,0 +1,113 @@
+/* .modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 90%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.modal img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+} */
+
+/* .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+} */
+
+.modal {
+  position: fixed; /* Використовуємо fixed для фіксованого позиціонування */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 80vw; /* Задаємо максимальну ширину модального вікна */
+  max-height: 80vh; /* Задаємо максимальну висоту модального вікна */
+  overflow: auto; /* Додаємо прокрутку при необхідності */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-image {
+  width: 100%; /* Зображення заповнює ширину модального вікна */
+  height: auto; /* Висота автоматично змінюється для збереження пропорцій */
+  max-height: 70vh; /* Максимальна висота зображення */
+  object-fit: contain; /* Зберігає пропорції зображення, не обрізає */
+}
