@@ -1,6 +1,6 @@
 import React from "react";
 import ImageCard from "./ImageCard";
-import "./";
+import "";
 
 const ImageGallery = ({ images }) => {
   if (images.length === 0) return null;
