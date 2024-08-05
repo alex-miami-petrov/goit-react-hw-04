@@ -4,14 +4,15 @@ import toast from "react-hot-toast";
 const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
     if (query.trim() === "") {
-      toast.error("Please enter text to search images.");
+      toast.error("Please enter a search query.");
       return;
     }
+
     onSubmit(query);
-    setQuery("");
   };
 
   return (
@@ -21,8 +22,6 @@ const SearchBar = ({ onSubmit }) => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          autoComplete="off"
-          autoFocus
           placeholder="Search images and photos"
         />
         <button type="submit">Search</button>

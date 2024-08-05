@@ -1,8 +1,18 @@
 import React from "react";
-import { RingLoader } from "react-spinners";
+import { Bars } from "react-loader-spinner";
 
 const Loader = () => {
-  return <RingLoader color="#00BFFF" />;
+  return (
+    <div className="loader-container">
+      <Bars
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="bars-loading"
+        visible={true}
+      />
+    </div>
+  );
 };
 
 export default Loader;

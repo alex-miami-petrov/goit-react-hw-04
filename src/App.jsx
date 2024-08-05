@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "./SearchBar";
-import ImageGallery from "./ImageGallery";
-import Loader from "./Loader";
-import ErrorMessage from "./ErrorMessage";
-import LoadMoreBtn from "./LoadMoreBtn";
-import ImageModal from "./ImageModal";
-import { ToastContainer } from "react-hot-toast";
-import api from "./api";
+import SearchBar from "./components/SearchBar";
+import ImageGallery from "./components/ImageGallery";
+import Loader from "./components/Loader";
+import ErrorMessage from "./components/ErrorMessage";
+import LoadMoreBtn from "./components/LoadMoreBtn";
+import ImageModal from "./components/ImageModal";
+import toast, { Toaster } from "react-hot-toast";
+import api from "./components/api";
+import "./App.css";
 
 const App = () => {
   const [query, setQuery] = useState("");
@@ -27,11 +28,16 @@ const App = () => {
           params: {
             page: page,
             query: query,
+            per_page: 12,
+          },
+          headers: {
+            Authorization: `Client-ID GSuz9ityvF_8tNnTGG9QC0qd31RnLO7SJT4XnO6OPnA`, // Замініть на ваш Access Key
           },
         });
         setImages((prevImages) => [...prevImages, ...response.data.results]);
         setError(null);
       } catch (err) {
+        toast.error("Something went wrong while fetching images.");
         setError("Something went wrong!");
       } finally {
         setLoading(false);
@@ -41,10 +47,10 @@ const App = () => {
     fetchImages();
   }, [query, page]);
 
-  const handleSearch = (query) => {
-    setQuery(query);
-    setPage(1);
+  const handleSearchSubmit = (newQuery) => {
+    setQuery(newQuery);
     setImages([]);
+    setPage(1);
   };
 
   const handleLoadMore = () => {
@@ -63,19 +69,20 @@ const App = () => {
 
   return (
     <div>
-      <SearchBar onSubmit={handleSearch} />
-      {error && <ErrorMessage message={error} />}
-      {loading && <Loader />}
-      <ImageGallery images={images} onImageClick={openModal} />
+      <SearchBar onSubmit={handleSearchSubmit} />
+      {loading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
+      <ul>
+        {images.map((image) => (
+          <li key={image.id}>
+            <img src={image.urls.small} alt={image.alt_description} />
+          </li>
+        ))}
+      </ul>
       {images.length > 0 && !loading && (
-        <LoadMoreBtn onClick={handleLoadMore} />
+        <button onClick={handleLoadMore}>Load More</button>
       )}
-      <ImageModal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        image={modalImage}
-      />
-      <ToastContainer />
+      <Toaster />
     </div>
   );
 };

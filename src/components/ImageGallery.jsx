@@ -1,17 +1,18 @@
 import React from "react";
 import ImageCard from "./ImageCard";
+import "./";
 
 const ImageGallery = ({ images }) => {
   if (images.length === 0) return null;
 
   return (
-    <ul>
+    <div className="gallery">
       {images.map((image) => (
-        <li key={image.id}>
+        <div className="gallery-item" key={image.id}>
           <ImageCard image={image} />
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
 
