@@ -1,75 +1,81 @@
 import React, { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import ContactList from "./components/ContactList";
-import SearchBox from "./components/SearchBox";
-import ContactForm from "./components/ContactForm";
-
-const initialContacts = [
-  { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-  { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-  { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-  { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-];
+import SearchBar from "./SearchBar";
+import ImageGallery from "./ImageGallery";
+import Loader from "./Loader";
+import ErrorMessage from "./ErrorMessage";
+import LoadMoreBtn from "./LoadMoreBtn";
+import ImageModal from "./ImageModal";
+import { ToastContainer } from "react-hot-toast";
+import api from "./api";
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [query, setQuery] = useState("");
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const [modalImage, setModalImage] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const savedContacts = JSON.parse(localStorage.getItem("contacts"));
-    if (savedContacts && savedContacts.length > 0) {
-      setContacts(savedContacts);
-    } else {
-      localStorage.setItem("contacts", JSON.stringify(initialContacts));
-      setContacts(initialContacts);
-    }
-  }, []);
+    if (!query) return;
 
-  useEffect(() => {
-    if (contacts.length > 0) {
-      localStorage.setItem("contacts", JSON.stringify(contacts));
-    }
-  }, [contacts]);
+    const fetchImages = async () => {
+      setLoading(true);
+      try {
+        const response = await api.get("search/photos", {
+          params: {
+            page: page,
+            query: query,
+          },
+        });
+        setImages((prevImages) => [...prevImages, ...response.data.results]);
+        setError(null);
+      } catch (err) {
+        setError("Something went wrong!");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const handleFilterChange = (event) => {
-    setFilter(event.target.value);
+    fetchImages();
+  }, [query, page]);
+
+  const handleSearch = (query) => {
+    setQuery(query);
+    setPage(1);
+    setImages([]);
   };
 
-  const getFilteredContacts = () => {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
   };
 
-  const handleAddContact = (newContact) => {
-    setContacts((prevContacts) => [...prevContacts, newContact]);
+  const openModal = (image) => {
+    setModalImage(image);
+    setIsModalOpen(true);
   };
 
-  const handleContactDelete = (contactId) => {
-    setContacts((prevContacts) =>
-      prevContacts.filter((contact) => contact.id !== contactId)
-    );
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalImage(null);
   };
-
-  const filteredContacts = getFilteredContacts();
 
   return (
-    <div className="app-container">
-      <h1>Phonebook</h1>
-      <div className="contact-form">
-        <ContactForm onAddContact={handleAddContact} />
-      </div>
-      <div className="search-box">
-        <SearchBox value={filter} onChange={handleFilterChange} />
-      </div>
-      <div className="contact-list">
-        <ContactList
-          contacts={filteredContacts}
-          onDeleteContact={handleContactDelete}
-        />
-      </div>
+    <div>
+      <SearchBar onSubmit={handleSearch} />
+      {error && <ErrorMessage message={error} />}
+      {loading && <Loader />}
+      <ImageGallery images={images} onImageClick={openModal} />
+      {images.length > 0 && !loading && (
+        <LoadMoreBtn onClick={handleLoadMore} />
+      )}
+      <ImageModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        image={modalImage}
+      />
+      <ToastContainer />
     </div>
   );
 };
