@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/ImageCard.css";
 
 const ImageCard = ({ image, onClick }) => {
   return (
