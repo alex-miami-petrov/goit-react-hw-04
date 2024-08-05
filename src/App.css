@@ -1,22 +1,21 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0; /* Вирівнювання без додаткових відступів */
+  padding: 0; /* Вирівнювання без додаткових відступів */
+  width: 100vw; /* Займає всю ширину viewport */
+  box-sizing: border-box; /* Включення padding у ширину */
 }
 
-/* Стилі для header */
 header {
   background-color: blue;
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Розтягується на всю ширину екрану */
-  position: fixed; /* Закріпити header */
+  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* Вищий рівень для видимості поверх іншого контенту */
+  z-index: 1000;
   display: flex;
-  justify-content: center; /* Центрує форму по горизонталі */
+  justify-content: center;
 }
 
 /* Стилі для form */
@@ -55,10 +54,13 @@ ul {
 }
 
 .loader-container {
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Центрує Loader по вертикалі, якщо потрібно */
+  height: 50px; /* Може бути інша висота */
+  width: 100%; /* Забезпечує, що контейнер не переповнює */
+  position: relative; /* Важливо для правильного позиціонування */
 }
 
 button {
@@ -78,4 +80,11 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.load-more-btn {
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }

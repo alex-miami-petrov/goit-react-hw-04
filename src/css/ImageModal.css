@@ -80,10 +80,11 @@
   transform: translate(-50%, -50%);
   background-color: white;
   border-radius: 8px;
-  padding: 20px;
-  max-width: 80vw; /* Задаємо максимальну ширину модального вікна */
-  max-height: 80vh; /* Задаємо максимальну висоту модального вікна */
-  overflow: auto; /* Додаємо прокрутку при необхідності */
+  padding: 0; /* Прибираємо padding, якщо не потрібно */
+  margin: 0; /* Прибираємо margin, якщо не потрібно */
+  max-width: 90vw; /* Максимальна ширина модального вікна */
+  max-height: 90vh; /* Максимальна висота модального вікна */
+  overflow: hidden; /* Прибираємо прокрутку */
 }
 
 .overlay {
@@ -95,19 +96,10 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-}
-
 .modal-image {
   width: 100%; /* Зображення заповнює ширину модального вікна */
   height: auto; /* Висота автоматично змінюється для збереження пропорцій */
-  max-height: 70vh; /* Максимальна висота зображення */
+  max-height: 100%; /* Максимальна висота зображення */
   object-fit: contain; /* Зберігає пропорції зображення, не обрізає */
+  display: block; /* Вилучає непотрібні відступи під зображенням */
 }

@@ -1,7 +1,7 @@
-.gallery {
+/* .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Три стовпчики */
-  gap: 16px; /* Відступи між картками */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   padding: 16px;
   margin: 0 auto;
 }
@@ -10,16 +10,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px; /* Висота картки */
-  overflow: hidden; /* Приховати частини зображення, що виходять за межі */
+  height: 200px;
+  overflow: hidden;
   border-radius: 8px;
-  background-color: #f0f0f0; /* Колір фону картки */
+  background-color: #f0f0f0;
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Зображення заповнює контейнер */
+  object-fit: cover;
 }
 
 .load-more-button {
@@ -35,4 +35,35 @@
 
 .load-more-button:hover {
   background-color: #0056b3;
+} */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Чотири стовпчики */
+  gap: 8px; /* Відступи між картками */
+  padding: 0; /* Вирівнювання без додаткових відступів */
+  margin: 0 auto; /* Вирівнювання по центру */
+  width: 100vw; /* Займає всю ширину viewport */
+  box-sizing: border-box; /* Включення padding у ширину */
+  padding-top: 70px;
+}
+
+/* Картка зображення */
+.gallery-item {
+  position: relative;
+  width: 100%; /* Ширина на всю доступну ширину стовпця */
+  padding-bottom: 75%; /* Співвідношення сторін 4:3 (тримати пропорції) */
+  overflow: hidden; /* Приховати частини зображення, що виходять за межі */
+  border-radius: 8px;
+  background-color: #f0f0f0; /* Колір фону картки */
+}
+
+/* Зображення всередині картки */
+.gallery-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Зображення заповнює контейнер */
 }

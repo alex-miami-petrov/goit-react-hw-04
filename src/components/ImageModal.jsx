@@ -34,7 +34,6 @@ import Modal from "react-modal";
 import PropTypes from "prop-types";
 import "../css/ImageModal.css";
 
-// Встановлює кореневий елемент для доступності модального вікна
 Modal.setAppElement("#root");
 
 const ImageModal = ({ image, onClose }) => {
@@ -48,10 +47,8 @@ const ImageModal = ({ image, onClose }) => {
       className="modal"
       overlayClassName="overlay"
       ariaHideApp={true}
+      shouldCloseOnOverlayClick={true}
     >
-      <button onClick={onClose} className="close-button">
-        Close
-      </button>
       <img
         src={image.urls.regular}
         alt={image.alt_description}
