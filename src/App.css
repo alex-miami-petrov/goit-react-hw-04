@@ -49,28 +49,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 колонки */
-  gap: 16px; /* Відступи між картками */
-  padding: 16px;
-  margin-top: 80px; /* Відступ, щоб врахувати висоту header */
-}
-
-/* Стилі для кожного елемента gallery */
-.gallery-item {
-  box-sizing: border-box;
-  height: 200px; /* Висота картки */
-  overflow: hidden; /* Приховати частини зображення, що виходять за межі */
-  border-radius: 8px;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Зображення заповнює контейнер */
-}
-
 /* Стилі для ul */
 ul {
   list-style-type: none;

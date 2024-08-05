@@ -7,10 +7,13 @@
 }
 
 .gallery-item {
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 200px; /* Висота картки */
   overflow: hidden; /* Приховати частини зображення, що виходять за межі */
   border-radius: 8px;
+  background-color: #f0f0f0; /* Колір фону картки */
 }
 
 .gallery-item img {
