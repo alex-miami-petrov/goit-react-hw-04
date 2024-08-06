@@ -58,9 +58,9 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px; /* Може бути інша висота */
-  width: 100%; /* Забезпечує, що контейнер не переповнює */
-  position: relative; /* Важливо для правильного позиціонування */
+  height: 50px;
+  width: 100%;
+  position: relative;
 }
 
 button {
@@ -72,10 +72,11 @@ button {
 
   background-color: yellow;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color color 0.25s;
 }
 button:hover {
   border-color: #646cff;
+  color: white;
 }
 button:focus,
 button:focus-visible {
@@ -87,4 +88,41 @@ button:focus-visible {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50%;
+}
+
+.load-more-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transform: background-color color linear;
+}
+
+.load-more-btn:hover,
+.load-more-btn:focus {
+  background-color: yellow;
+  color: black;
+}
+
+.load-more-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
 }

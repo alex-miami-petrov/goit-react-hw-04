@@ -13,8 +13,8 @@ const Loader = () => {
   return (
     <div className="loader-container" ref={loaderRef}>
       <Bars
-        height="80"
-        width="80"
+        height="40"
+        width="40"
         color="#4fa94d"
         ariaLabel="bars-loading"
         visible={true}

@@ -53,7 +53,7 @@
   position: relative;
   width: 100%; /* Ширина на всю доступну ширину стовпця */
   padding-bottom: 75%; /* Співвідношення сторін 4:3 (тримати пропорції) */
-  overflow: hidden; /* Приховати частини зображення, що виходять за межі */
+  overflow: hidden;
   border-radius: 8px;
   background-color: #f0f0f0; /* Колір фону картки */
 }
