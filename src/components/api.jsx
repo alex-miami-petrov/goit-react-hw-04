@@ -8,8 +8,8 @@ export const fetchImages = async (query, page = 1) => {
     const response = await axios.get(BASE_URL, {
       params: {
         query,
-        per_page: 12, // Кількість зображень на сторінку
-        page, // Параметр пагінації
+        per_page: 12,
+        page,
       },
       headers: {
         Authorization: `Client-ID ${API_KEY}`,
