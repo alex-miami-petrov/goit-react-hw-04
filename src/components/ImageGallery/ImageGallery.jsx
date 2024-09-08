@@ -1,15 +1,15 @@
 import React from "react";
-import ImageCard from "./ImageCard";
-import "../css/ImageGallery.css";
+import ImageCard from "../ImageCard/ImageCard";
+import s from "./ImageGallery.module.css";
 
 const ImageGallery = ({ images, onImageClick }) => {
   if (images.length === 0) return null;
 
   return (
-    <div className="gallery">
+    <div className={s.gallery}>
       {images.map((image) => (
         <div
-          className="gallery-item"
+          className={s.galleryItem}
           key={image.id}
           onClick={() => onImageClick(image)}
         >

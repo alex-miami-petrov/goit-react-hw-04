@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import SearchBar from "./components/SearchBar";
-import ImageGallery from "./components/ImageGallery";
-import Loader from "./components/Loader";
+import SearchBar from "./components/SearchBar/SearchBar";
+import ImageGallery from "./components/ImageGallery/ImageGallery";
+import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMesage/ErrorMessage";
-import LoadMoreBtn from "./components/LoadMoreBtn";
-import ImageModal from "./components/ImageModal";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "./components/ImageModal/ImageModal";
 import toast, { Toaster } from "react-hot-toast";
 import { fetchImages } from "./components/Api/api";
 import "./App.css";
@@ -68,14 +68,12 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Блокуємо скрол основного контенту при відкритті модального вікна
     if (selectedImage) {
       document.body.style.overflow = "hidden";
     } else {
-      // Відновлюємо скрол при закритті модального вікна
       document.body.style.overflow = "";
     }
-    // Відновлюємо скрол при розмонтуванні компонента
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -96,7 +94,7 @@ const App = () => {
 
   return (
     <div id="root">
-      <Toaster /> {/* Show toast notifications */}
+      <Toaster />
       <header>
         <SearchBar onSubmit={handleSearchSubmit} />
       </header>
