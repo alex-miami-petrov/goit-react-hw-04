@@ -9,16 +9,15 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   const handleSearchSubmit = (event) => {
-    event.preventDefault(); // Запобігає перезавантаженню сторінки
+    event.preventDefault(); 
 
     if (!query.trim()) {
       toast.error("Please enter a search query.");
       return;
     }
 
-    onSubmit(query); // Передає запит до батьківського компонента
-    setQuery(""); // Очищає поле вводу
-  };
+    onSubmit(query); 
+    setQuery(""); 
 
   return (
     <header>
