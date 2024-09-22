@@ -3,22 +3,20 @@ import toast from "react-hot-toast";
 
 const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState("");
-
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
-
   const handleSearchSubmit = (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     if (!query.trim()) {
       toast.error("Please enter a search query.");
       return;
     }
 
-    onSubmit(query); 
-    setQuery(""); 
-
+    onSubmit(query);
+    setQuery("");
+  };
   return (
     <header>
       <form onSubmit={handleSearchSubmit}>
